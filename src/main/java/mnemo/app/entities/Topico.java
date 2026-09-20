@@ -1,9 +1,8 @@
-package mnemo.model.entities;
+package mnemo.app.entities;
 
 import java.time.LocalDate;
 
 public class Topico {
-    private LocalDate dataProva;
     private String nome;
     private LocalDate ultimaVezVisto;
     private int nivel;
@@ -14,14 +13,11 @@ public class Topico {
                   int nivel,
                   double dificuldade) {
 
-        this.dataProva = dataProva;
         this.nome = nome;
         this.ultimaVezVisto = LocalDate.now();
         this.nivel = nivel;
         this.dificuldade = dificuldade;
     }
-
-    public LocalDate getDataProva() {return dataProva;}
 
     public String getNome() {return nome;}
 
@@ -30,10 +26,6 @@ public class Topico {
     public int getNivel() {return nivel;}
 
     public double getDificuldade() {return dificuldade;}
-
-    public void setDataProva(LocalDate dataProva) {
-        this.dataProva = dataProva;
-    }
 
     public void setNome(String nome) {
         this.nome = nome;

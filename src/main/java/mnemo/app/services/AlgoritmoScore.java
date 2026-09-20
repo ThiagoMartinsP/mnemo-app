@@ -1,6 +1,6 @@
-package mnemo.model.services;
+package mnemo.app.services;
 
-import mnemo.model.entities.Topico;
+import mnemo.app.entities.Topico;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -8,20 +8,20 @@ public final class AlgoritmoScore {
     private static final int[] INTERVALOS = {1, 3, 6, 12, 24};
     private static final double TETO_DATA_PROVA = 3.0;
 
-    public static double calculate(Topico topic) {
+    public static double calculate(Topico topic, LocalDate hoje) {
 
-        LocalDate dataProva = topic.getDataProva();
+        // LocalDate dataProva = topic.getDataProva();
+        LocalDate dataProva = LocalDate.now();
         LocalDate ultimaVezVisto = topic.getUltimaVezVisto();
         int nivel = topic.getNivel();
         double dificuldade = topic.getDificuldade();
-        LocalDate today = LocalDate.now();
 
-        return (calculateReviewPressure(ultimaVezVisto,
+        return (calculateReviewMultiplier(ultimaVezVisto,
                                                nivel,
                                                dificuldade,
-                                               today) *
+                                               hoje) *
                        gFunction(dificuldade) *
-                       calculateExamPressure(dataProva, today));
+                       calculateExamPressure(dataProva, hoje));
     }
 
     private static double gFunction(double d) {
@@ -32,7 +32,7 @@ public final class AlgoritmoScore {
         return (1 + 0.6 * (0.5-d));
     }
 
-    private static double calculateReviewPressure(LocalDate lastDateReview,
+    private static double calculateReviewMultiplier(LocalDate lastDateReview,
                                           int level,
                                           double d,
                                           LocalDate today) {
