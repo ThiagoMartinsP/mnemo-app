@@ -24,7 +24,7 @@ public class Materia {
     @OneToMany(mappedBy="materia")
     private List<Topico> topicos;
 
-    protected Materia() {}
+    public Materia() {}
 
     public Materia(String nome, LocalDate dataProva) {
         this.nome = nome;

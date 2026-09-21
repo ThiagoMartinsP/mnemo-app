@@ -29,17 +29,19 @@ public class Topico {
     @JoinColumn(name="materia_id", nullable = false)
     private Materia materia;
 
-    protected Topico() {}
+    public Topico() {}
 
-    public Topico(LocalDate dataProva,
-                  String nome,
+    public Topico(String nome,
+                  LocalDate dataProva,
                   int nivel,
-                  double dificuldade) {
+                  double dificuldade,
+                  Materia materia) {
 
         this.nome = nome;
         this.ultimaVezVisto = LocalDate.now();
         this.nivel = nivel;
         this.dificuldade = dificuldade;
+        this.materia = materia;
     }
 
     public Long getId() { return this.id; }
