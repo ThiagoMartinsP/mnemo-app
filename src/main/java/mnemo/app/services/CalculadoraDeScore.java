@@ -4,7 +4,7 @@ import mnemo.app.entities.Topico;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public final class AlgoritmoScore {
+public final class CalculadoraDeScore {
     private static final int[] INTERVALOS = {1, 3, 6, 12, 24};
     private static final double TETO_DATA_PROVA = 3.0;
 
