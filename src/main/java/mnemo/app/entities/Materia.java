@@ -3,9 +3,10 @@ package mnemo.app.entities;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table(name = "materias")
+@Table(name = "materia")
 public class Materia {
 
     @Id
@@ -20,7 +21,15 @@ public class Materia {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataProva;
 
-    public Materia() {}
+    @OneToMany(mappedBy="materia")
+    private List<Topico> topicos;
+
+    protected Materia() {}
+
+    public Materia(String nome, LocalDate dataProva) {
+        this.nome = nome;
+        this.dataProva = dataProva;
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
