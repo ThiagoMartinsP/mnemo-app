@@ -1,6 +1,8 @@
 package mnemo.app.services;
 
 import mnemo.app.entities.Topico;
+
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -10,18 +12,19 @@ public final class CalculadoraDeScore {
 
     public static double calculate(Topico topic, LocalDate hoje) {
 
-        // LocalDate dataProva = topic.getDataProva();
         LocalDate dataProva = LocalDate.now();
         LocalDate ultimaVezVisto = topic.getUltimaVezVisto();
         int nivel = topic.getNivel();
         double dificuldade = topic.getDificuldade();
 
-        return (calculateReviewMultiplier(ultimaVezVisto,
+        double resultado = (calculateReviewMultiplier(ultimaVezVisto,
                                                nivel,
                                                dificuldade,
                                                hoje) *
                        gFunction(dificuldade) *
                        calculateExamPressure(dataProva, hoje));
+
+        return Math.round(resultado * 100.0) / 100.0;
     }
 
     private static double gFunction(double d) {
