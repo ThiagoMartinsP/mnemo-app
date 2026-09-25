@@ -10,8 +10,7 @@ public final class CalculadoraDeScore {
 
     public static double calculate(Topico topic, LocalDate hoje) {
 
-        // LocalDate dataProva = topic.getDataProva();
-        LocalDate dataProva = LocalDate.now();
+        LocalDate dataProva = topic.getMateria().getDataProva();
         LocalDate ultimaVezVisto = topic.getUltimaVezVisto();
         int nivel = topic.getNivel();
         double dificuldade = topic.getDificuldade();
@@ -44,6 +43,9 @@ public final class CalculadoraDeScore {
     private static double calculateExamPressure(LocalDate dataProva, LocalDate today) {
 
         long leftDaysUntilExam = ChronoUnit.DAYS.between(today, dataProva);
+        if (leftDaysUntilExam < 0) {
+            return 1.0;
+        }
         double t = Math.clamp((12f - leftDaysUntilExam) / 12f, 0.0, 1.0);
 
         return 1.0 + (TETO_DATA_PROVA - 1.0) * t * t;
