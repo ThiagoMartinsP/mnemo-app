@@ -30,6 +30,7 @@ h1, h2, h3 { margin: 0; }
 .form { display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1px solid #ccc; border-radius: 8px; }
 .form__erro { color: #b00020; margin: 0; }
 
+.tabela-wrap { overflow-x: auto; }
 .tabela { width: 100%; border-collapse: collapse; }
 .tabela th, .tabela td { text-align: left; padding: 8px; border-bottom: 1px solid #ddd; }
 .tabela .num { font-variant-numeric: tabular-nums; }
