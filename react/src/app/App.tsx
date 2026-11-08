@@ -1,11 +1,15 @@
 import { NavLink, Outlet } from 'react-router'
 import { SeedButton } from '../features/seed/SeedButton'
+import { Logo } from '../shared/ui/Logo'
 
 export function App() {
   return (
     <div className="layout">
       <header className="topo">
-        <span className="marca">MNEMO</span>
+        <span className="marca">
+          <Logo />
+          MNEMO
+        </span>
         <nav className="nav">
           {/* NavLink aplica a classe "active" sozinho quando a rota casa. "end" evita que "/" fique ativo em todas. */}
           <NavLink to="/" end>

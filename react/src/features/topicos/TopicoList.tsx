@@ -1,5 +1,6 @@
 import { mensagemAmigavel } from '../../shared/api/errors'
 import { EstadoCarregando, EstadoErro, EstadoVazio } from '../../shared/ui/Estados'
+import { NivelChip } from '../../shared/ui/NivelChip'
 import { useTopicos } from './queries'
 
 export function TopicoList() {
@@ -27,7 +28,9 @@ export function TopicoList() {
             <tr key={t.id}>
               <td>{t.nome}</td>
               <td>{t.materia.nome}</td>
-              <td className="num">{t.nivel}</td>
+              <td>
+                <NivelChip nivel={t.nivel} />
+              </td>
               <td className="num">{t.dificuldade.toFixed(2)}</td>
               <td className="num">{t.ultima_vez_visto}</td>
             </tr>

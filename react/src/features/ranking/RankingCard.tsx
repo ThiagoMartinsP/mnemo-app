@@ -1,6 +1,7 @@
 import { brParaIso, diasEntre, type DataIso } from '../../shared/lib/datas'
 import { Card } from '../../shared/ui/Card'
 import { Chip } from '../../shared/ui/Chip'
+import { NivelChip } from '../../shared/ui/NivelChip'
 import { AvaliacaoBotoes } from './AvaliacaoBotoes'
 import type { TopicoPontuado } from './types'
 
@@ -29,9 +30,13 @@ export function RankingCard({ item, posicao, dataReferencia }: RankingCardProps)
         <div className="ranking-card__info">
           <h3 className="ranking-card__nome">{topico.nome}</h3>
           <div className="ranking-card__chips">
-            <Chip>NÍVEL {topico.nivel}</Chip>
+            <NivelChip nivel={topico.nivel} />
             <Chip>{materia.nome}</Chip>
-            {diasProva !== null && <Chip title={`Prova em ${materia.data_prova}`}>{rotuloProva(diasProva)}</Chip>}
+            {diasProva !== null && (
+              <Chip fundo="var(--prova)" cor="var(--prova-texto)" title={`Prova em ${materia.data_prova}`}>
+                {rotuloProva(diasProva)}
+              </Chip>
+            )}
           </div>
         </div>
         <div className="ranking-card__score">
