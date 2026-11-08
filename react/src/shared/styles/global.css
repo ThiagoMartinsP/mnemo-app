@@ -23,6 +23,18 @@ h1, h2, h3 { margin: 0; }
 .estado { padding: 24px; text-align: center; }
 .estado--erro { color: #b00020; }
 
+/* Lista ocupa o espaço livre; formulário tem largura fixa. Abaixo de ~700px vira uma coluna. */
+.duas-colunas { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
+@media (max-width: 700px) { .duas-colunas { grid-template-columns: 1fr; } }
+
+.form { display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1px solid #ccc; border-radius: 8px; }
+.form__erro { color: #b00020; margin: 0; }
+
+.tabela { width: 100%; border-collapse: collapse; }
+.tabela th, .tabela td { text-align: left; padding: 8px; border-bottom: 1px solid #ddd; }
+.tabela .num { font-variant-numeric: tabular-nums; }
+.sem-valor { opacity: 0.6; font-style: italic; }
+
 .ranking-lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
 .ranking-card__topo { display: flex; align-items: center; gap: 16px; padding: 16px; }
 .ranking-card__posicao { font-size: 32px; font-weight: 800; }
