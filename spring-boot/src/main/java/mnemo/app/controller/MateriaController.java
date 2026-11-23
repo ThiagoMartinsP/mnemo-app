@@ -24,4 +24,15 @@ public class MateriaController {
     public List<Materia> getAll() {
         return service.listar();
     }
+
+    @GetMapping("/{id}")
+    public Materia getById(@PathVariable("id") Long id) {
+        return service.buscarPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public Materia update(@PathVariable("id") Long id,
+                          @RequestBody Materia materiaAtualizada) {
+        return service.atualizar(id, materiaAtualizada);
+    }
 }
