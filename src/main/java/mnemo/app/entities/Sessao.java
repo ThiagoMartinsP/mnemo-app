@@ -9,6 +9,18 @@ import java.time.LocalTime;
 @Table(name="sessao")
 public class Sessao {
 
+    public Sessao() {}
+
+    public Sessao(LocalDate dia,
+                  double avaliacao,
+                  LocalTime duracao,
+                  Topico topico) {
+        this.dia = dia;
+        this.avaliacao = avaliacao;
+        this.duracao = duracao;
+        this.topico = topico;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +34,25 @@ public class Sessao {
     @Column(name="duracao", nullable = true)
     private LocalTime duracao;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="topico_id")
     private Topico topico;
+
+    public Long getId() {return id;}
+
+    public LocalDate getDia() {return dia;}
+
+    public double getAvaliacao() {return avaliacao;}
+
+    public LocalTime getDuracao() {return duracao;}
+
+    public Topico getTopico() {return topico;}
+
+    public void setDia(LocalDate dia) {this.dia = dia;}
+
+    public void setAvaliacao(double avaliacao) {this.avaliacao = avaliacao;}
+
+    public void setDuracao(LocalTime duracao) {this.duracao = duracao;}
+
+    public void setTopico(Topico topico) {this.topico = topico;}
 }
