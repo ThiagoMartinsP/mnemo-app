@@ -32,7 +32,6 @@ public class Topico {
     public Topico() {}
 
     public Topico(String nome,
-                  LocalDate dataProva,
                   int nivel,
                   double dificuldade,
                   Materia materia) {
